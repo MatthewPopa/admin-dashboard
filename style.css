@@ -1,6 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@500&family=Roboto:wght@400;500&display=swap');
 
-:root {
+body {
     --main-color: #818CF8;
     --background: #F0F1F5;
     --transparent-background: rgba(255, 255, 255, 0.95);
@@ -9,13 +9,45 @@
     --tertiary-text: #b1b2c2;
     --hover-text: #383a47;
     --section-bg-color: #FFFFFF;
-    --nav-hover: #f4f5f8;
+    --nav-hover: #eef0f5;
     --green: #4ADE80;
     --red: #EF4444;
     --box-shadow: 0 3px 12px rgb(0, 0, 0, .1);
     --hover-box-shadow: 0 4px 15px rgb(0, 0, 0, .2);
     --border-radius: 8px;
     --search-icon: url('data:image/svg+xml,%3Csvg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" class="test" data-src="/icons/search-01-stroke-rounded.svg" xmlns:xlink="http://www.w3.org/1999/xlink" role="img" %3E%3Cpath d="M17.5 17.5L22 22" stroke="%23595B6C" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"%3E%3C/path%3E%3Cpath d="M20 11C20 6.02944 15.9706 2 11 2C6.02944 2 2 6.02944 2 11C2 15.9706 6.02944 20 11 20C15.9706 20 20 15.9706 20 11Z" stroke="%23595B6C" stroke-width="1.5" stroke-linejoin="round"%3E%3C/path%3E%3C/svg%3E');
+    --search-cancel: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%23595B6C'><path d='M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z'/></svg>");
+}
+
+body.dark-theme {
+    --main-color: #818CF8;
+    --background: hsl(229, 18%, 18%);
+    --transparent-background: hsla(233, 15%, 22%, 0.95);
+    --primary-text: hsl(232, 30%, 85%);
+    --secondary-text: hsl(235, 20%, 61%);
+    --tertiary-text: hsl(240, 15%, 54%);
+    --hover-text: #b1b5ce;
+    --section-bg-color: hsl(233, 15%, 22%);
+    --nav-hover: hsla(233, 18%, 25%, 0.95);
+    --green: #4ADE80;
+    --red: #EF4444;
+    --box-shadow: 0 3px 12px rgb(0, 0, 0, .1);
+    --hover-box-shadow: 0 4px 15px rgb(0, 0, 0, .2);
+    --border-radius: 8px;
+    --search-icon: url('data:image/svg+xml,%3Csvg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" class="test" data-src="/icons/search-01-stroke-rounded.svg" xmlns:xlink="http://www.w3.org/1999/xlink" role="img" %3E%3Cpath d="M17.5 17.5L22 22" stroke="%23cdd0e4" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"%3E%3C/path%3E%3Cpath d="M20 11C20 6.02944 15.9706 2 11 2C6.02944 2 2 6.02944 2 11C2 15.9706 6.02944 20 11 20C15.9706 20 20 15.9706 20 11Z" stroke="%23cdd0e4" stroke-width="1.5" stroke-linejoin="round"%3E%3C/path%3E%3C/svg%3E');
+    --search-cancel: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%23cdd0e4'><path d='M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z'/></svg>")
+}
+
+body.dark-theme .sun {
+    display: none;
+}
+
+body.dark-theme .moon {
+    display: block;
+}
+
+@media (prefers-color-scheme: dark) {
+    
 }
 
 * {
@@ -218,7 +250,7 @@ header {
 .header-icon,
 .hamburger-icon {
     stroke: var(--primary-text);
-    transition: .25s;
+    transition: .1s;
 }
 
 .header-icon:hover,
@@ -229,6 +261,22 @@ header {
 header button {
     cursor: pointer;
     padding: .25rem;
+}
+
+.header-icon.sun {
+    display: block;
+}
+
+.header-icon.moon {
+    display: none;
+}
+
+.header-icon.midnight {
+    display: none;
+}
+
+.header-icon.system {
+    display: none;
 }
 
 input[type="search"] {
@@ -256,7 +304,7 @@ input[type="search"]::-webkit-search-cancel-button {
     height: 1.5rem;
     width: 1.5rem;
     padding-bottom: .2rem;
-    background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%23777'><path d='M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z'/></svg>");
+    background-image: var(--search-cancel);
     cursor: pointer;
 }
 
@@ -361,7 +409,7 @@ hgroup {
     justify-content: center;
     gap: .25rem;
     cursor: pointer;
-    transition: .25s;
+    transition: box-shadow .25s;
 }
 
 .header-buttons button:hover {
@@ -369,7 +417,7 @@ hgroup {
 }
 
 .header-buttons button:last-child {
-    color: var(--section-bg-color);
+    color: white;
     background-color: var(--main-color);
 }
 
@@ -378,7 +426,7 @@ hgroup {
 }
 
 .header-buttons button:last-child .button-icon {
-    stroke: var(--section-bg-color);
+    stroke: white;
 }
 
 main {
@@ -400,7 +448,7 @@ main > section {
 .section1 {
     grid-area: 1 / 1 / span 2 / span 6;
     background-color: var(--main-color);
-    color: var(--section-bg-color);
+    color: white;
 }
 
 .section2,
@@ -484,8 +532,6 @@ nav::-webkit-scrollbar-thumb:hover {
 @media screen and (width < 800px) {
     .section1 {
         grid-area: 1 / 1 / span 2 / span 12;
-        background-color: var(--main-color);
-        color: var(--section-bg-color);
     }
     
     .section2,
