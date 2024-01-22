@@ -16,7 +16,7 @@ document.addEventListener('click', (e) => {
 
 const prefersDarkScheme = window.matchMedia("(prefers-color-scheme: dark)");
 
-document.addEventListener('click', () => {
+themeBtn.addEventListener("click", () => {
     document.body.classList.toggle("light-theme");
     document.body.classList.toggle("dark-theme");
     if (prefersDarkScheme.matches) {
