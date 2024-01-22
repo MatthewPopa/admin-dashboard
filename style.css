@@ -3,9 +3,11 @@
 :root {
     --main-color: #818CF8;
     --background: #F0F1F5;
+    --transparent-background: rgba(255, 255, 255, 0.95);
     --primary-text: #595B6C;
     --secondary-text: #A3A4AE;
     --tertiary-text: #b1b2c2;
+    --hover-text: #383a47;
     --section-bg-color: #FFFFFF;
     --nav-hover: #f4f5f8;
     --green: #4ADE80;
@@ -42,32 +44,73 @@ a {
     color: unset;
 }
 
+button {
+    appearance: none;
+    background-color: unset;
+    border: none;
+    outline: none;
+    padding: unset;
+}
+
+.glass {
+    background: rgba(255, 255, 255, 0.2);
+    border-radius: 8px;
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.6);
+}
+
 .container {
-    display: grid;
-    grid-template-columns: 260px 1fr;
-    gap: 1.5rem;
+    display: flex;
+    width: 100%;
+}
+
+.layout {
+    margin-left: 15rem;
+    width: calc(100% - 15rem);
     padding-right: 1.5rem;
 }
 
-.wrapper {
+.content {
     width: 100%;
-    max-width: 1360px;
-    justify-self: center;
     display: grid;
-    grid-template-rows: auto auto 1fr;
+    grid-template-rows: auto 1fr;
+    justify-content: center;
+    margin-top: calc(60px + 3rem);
+    margin-bottom: 3rem;
+    padding-left: 1.5rem;
+}
+
+.content-wrapper {
+    display: flex;
+    flex-direction: column;
+    max-width: 1300px;
+    width: 100%;
     gap: 1.5rem;
 }
 
 aside {
+    height: 100dvh;
+    width: 15rem;
     grid-row: 1 / span 3;
-    height: 100%;
-    background-color: var(--section-bg-color);
-    padding: 1rem;
+    background-color: var(--transparent-background);
+    backdrop-filter: saturate(500%) blur(10px);
+    padding: 1rem .25rem 0 1rem;
     display: flex;
     flex-direction: column;
-    gap: 1.5rem;
     cursor: default;
     user-select: none;
+    position: fixed;
+    z-index: 2;
+    transition: transform .3s;
+}
+
+nav {
+    overflow-y: scroll;
+    mask: linear-gradient(transparent .5rem, var(--section-bg-color) 1.5rem, var(--section-bg-color));
+    -webkit-mask: linear-gradient(transparent .5rem, var(--section-bg-color) 1.5rem, var(--section-bg-color));
+    padding-top: 1.5rem;
 }
 
 aside ul {
@@ -128,30 +171,71 @@ aside ul li:hover {
     padding-top: .25rem;
 }
 
+.nav-menu-button {
+    display: none;
+    padding: .25rem;
+    margin-left: 1rem;
+    cursor: pointer;
+}
+
+.header-wrapper {
+    position: fixed;
+    width: calc(100% - 15rem);
+    display: flex;
+    justify-content: center;
+    padding: 0 1.5rem;
+}
+
+.header-wrapper:before {
+    content: "";
+    width: 100%;
+    height: 5rem;
+    left: 0;
+    top: 0;
+    position: fixed;
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    mask: linear-gradient(var(--background), var(--background) 50%, transparent 100%);
+    -webkit-mask: linear-gradient(var(--background), var(--background) 50%, transparent 100%);
+    z-index: -1;
+}
+
 header {
     height: 60px;
-    width: 100%;
     display: flex;
-    grid-auto-flow: column;
-    grid-template: 100% / 1fr repeat(4, auto);
     align-items: center;
-    background-color: var(--section-bg-color);
-    gap: 1rem;
+    background-color: var(--transparent-background);
+    gap: .5rem;
     padding: 0 1.5rem 0 0;
     border-radius: var(--border-radius);
     margin-top: 1.5rem;
     box-shadow: var(--box-shadow);
+    max-width: 1300px;
+    width: 100%;
+    backdrop-filter: saturate(500%) blur(10px);
 }
 
-.header-icon {
+.header-icon,
+.hamburger-icon {
     stroke: var(--primary-text);
+    transition: .25s;
+}
+
+.header-icon:hover,
+.hamburger-icon:hover  {
+    stroke: var(--hover-text);
+}
+
+header button {
     cursor: pointer;
+    padding: .25rem;
 }
 
 input[type="search"] {
     background-image: var(--search-icon);
     background-position: left 1.25rem center;
     background-repeat: no-repeat;
+    background-color: transparent;
     border: none;
     padding: .5rem 0;
     padding-left: 3.5rem;
@@ -197,13 +281,14 @@ input[type="search"]:focus {
     cursor: pointer;
     position: relative;
     user-select: none;
+    margin-left: 0.25rem;
 }
 
 .profile::after {
     content: '';
     background-color: var(--green);
-    height: 12px;
-    width: 12px;
+    height: 10px;
+    width: 10px;
     position: absolute;
     bottom: -2px;
     right: -2px;
@@ -301,7 +386,6 @@ main {
     grid-template-columns: repeat(12, 1fr);
     grid-template-rows: repeat(6, 125px);
     gap: 24px;
-    border-radius: var(--border-radius);
 }
 
 main > section {
@@ -335,8 +419,111 @@ main > section {
 .section7,
 .section8 {
     grid-column: span 4;
+    grid-row: span 2;
+}
+
+nav::-webkit-scrollbar {
+  width: 12px;
+}
+ 
+/* Handle */
+nav::-webkit-scrollbar-thumb {
+  background: var(--tertiary-text);
+  border: 4px solid transparent;
+  background-clip: padding-box;
+  border-radius: 10px;
+}
+
+/* Handle on hover */
+nav::-webkit-scrollbar-thumb:hover {
+  background: var(--tertiary-text); 
+  border: 3px solid transparent;
+  background-clip: padding-box;
+}
+
+.toggle-overlay {
+    display: none;
+    position: fixed;
+    background-color: rgb(0, 0, 0, .5);
+    height: 100vh;
+    width: 100vw;
+    z-index: 1;
+}
+
+.toggle-overlay.enabled {
+    display: block;
+}
+
+@media screen and (width < 1200px) {
+    .nav-menu-button {
+        display: unset;
+    }
+    .layout {
+        width: 100%;
+        margin-left: 0;
+    }
+    .header-wrapper {
+        width: 100%;
+    }
+    aside {
+        transform: translate(-100%);
+    }
+    aside.visible {
+        transform: unset;
+    }
+    input[type="search"] {
+        background-position: left center;
+        padding: .5rem 0;
+        padding-left: 2.25rem;
+    }
+    input[type="search"]:focus {
+        padding-left: 0;
+    }
 }
 
 @media screen and (width < 800px) {
+    .section1 {
+        grid-area: 1 / 1 / span 2 / span 12;
+        background-color: var(--main-color);
+        color: var(--section-bg-color);
+    }
     
+    .section2,
+    .section3 {
+        grid-column: span 6;
+        grid-row: span 2;
+    }
+    
+    .section4,
+    .section5 {
+        grid-column: span 12;
+        grid-row: span 3;
+    }
+    
+    .section6,
+    .section7,
+    .section8 {
+        grid-column: span 4;
+    }
+}
+
+@media screen and (width < 600px) {
+    hgroup {
+        gap: .5rem;
+    }
+    hgroup > * {
+        grid-column: span 2;
+    }
+    .header-buttons {
+        grid-area: 3 / 1;
+        justify-self: stretch;
+        margin-top: .5rem;
+    }
+    .section2,
+    .section3,
+    .section6,
+    .section7,
+    .section8 {
+        grid-column: span 12;
+    }
 }
