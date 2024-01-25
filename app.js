@@ -2,8 +2,12 @@ const navBtn = document.querySelector('.nav-menu-button');
 const overlayToggle = document.querySelector('.toggle-overlay');
 const themeMenu = document.querySelector('#theme-select');
 const headerMenu = document.querySelector('.header-menu');
+let activeMenu;
 
 document.addEventListener('click', (e) => {
+    if (!activeMenu.contains(e.target)) {
+        activeMenu.classList.remove('active');
+    }
     if (e.target == navBtn) {
         document.querySelector('aside').classList.add('visible');
         document.querySelector('.toggle-overlay').classList.add('enabled');
@@ -12,14 +16,20 @@ document.addEventListener('click', (e) => {
         document.querySelector('aside').classList.remove('visible');
         document.querySelector('.toggle-overlay').classList.remove('enabled');
     }
-    // console.log(e.target);
+    console.log(e.target);
 });
 
 const prefersDarkScheme = window.matchMedia("(prefers-color-scheme: dark)");
 
 headerMenu.addEventListener('click', (e) => {
+    if(activeMenu && !activeMenu.contains(e.target)) {
+        activeMenu.classList.remove('active');
+        //current issue is that this is immediately counteracted
+    }
     if(e.target.tagName == 'BUTTON') {
-        e.target.nextElementSibling.classList.toggle('visible');
+        e.target.nextElementSibling.classList.toggle('active'); //by this
+        activeMenu = document.querySelector('.active');
+        e.stopPropagation();
     }
 });
 
@@ -28,19 +38,6 @@ themeMenu.addEventListener("click", (e) => {
     if(e.target.tagName == 'LI') {
         changeTheme(e.target.dataset.theme);
     }
-    // document.body.classList.toggle("light-theme");
-    // document.body.classList.toggle("dark-theme");
-    // let theme;
-    // if (prefersDarkScheme.matches) {
-    //     theme = document.body.classList.contains("light-theme")
-    //         ? "light"
-    //         : "dark";
-    // } else {
-    //     theme = document.body.classList.contains("dark-theme")
-    //         ? "dark"
-    //         : "light";
-    // }
-    // localStorage.setItem("theme", theme);
 });
 
 function changeTheme(theme) {

@@ -10,8 +10,6 @@ body {
     --hover-text: #383a47;
     --section-bg-color: #FFFFFF;
     --nav-hover: #eef0f5;
-    --green: #4ADE80;
-    --red: #EF4444;
     --box-shadow: 0 3px 12px rgb(0, 0, 0, .1);
     --hover-box-shadow: 0 4px 15px rgb(0, 0, 0, .2);
     --border-radius: 8px;
@@ -29,8 +27,6 @@ body.dark-theme {
     --hover-text: #b1b5ce;
     --section-bg-color: hsl(233, 15%, 22%);
     --nav-hover: hsla(233, 18%, 25%, 0.95);
-    --green: #4ADE80;
-    --red: #EF4444;
     --box-shadow: 0 3px 12px rgb(0, 0, 0, .1);
     --hover-box-shadow: 0 4px 15px rgb(0, 0, 0, .2);
     --border-radius: 8px;
@@ -48,8 +44,6 @@ body.midnight-theme {
     --hover-text: #b1b5ce;
     --section-bg-color: rgb(17, 17, 19);
     --nav-hover: hsla(233, 18%, 25%, 0.95);
-    --green: #4ADE80;
-    --red: #EF4444;
     --box-shadow: 0 3px 12px rgb(0, 0, 0, .1);
     --hover-box-shadow: 0 4px 15px rgb(0, 0, 0, .2);
     --border-radius: 8px;
@@ -369,7 +363,7 @@ ul.header-menu li ul li:hover {
     background-color: var(--nav-hover);
 }
 
-ul.header-menu li ul.visible {
+ul.header-menu li ul.active {
     visibility: visible;
 }
 
