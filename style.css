@@ -53,17 +53,22 @@ body.midnight-theme {
 
 body.midnight-theme .section1,
 body.midnight-theme .header-buttons button:last-child {
-    background-color: var(--background);
+    background: var(--background);
     border: 1px solid var(--main-color);
     color: var(--primary-text);
 }
 
-body.midnight-theme .header-buttons button:last-child .button-icon {
+body.midnight-theme .header-buttons button:last-child .button-icon,
+body.midnight-theme .logo-text > svg {
     stroke: var(--primary-text);
 }
 
 body.midnight-theme header {
     border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+body.dark-theme .logo-text > svg {
+    stroke: white;
 }
 
 body[data-mode="light"] .header-icon.sun {
@@ -215,9 +220,6 @@ aside ul li:hover {
 }
 
 .logo {
-    font: 500 1em 'Roboto Mono', monospace;
-    color: var(--main-color);
-    letter-spacing: -.05em;
     font-size: 1.5rem;
     display: flex;
     align-items: center;
@@ -235,8 +237,19 @@ aside ul li:hover {
     stroke-width: 3;
 }
 
-.logo-text {
+.logo .logo-text {
     padding-top: .25rem;
+    color: var(--main-color);
+}
+
+.logo-text {
+    font: 500 1em 'Roboto Mono', monospace;
+    letter-spacing: -.05em;
+}
+
+section .logo-text svg {
+    stroke: var(--section-bg-color);
+    stroke-width: 3;
 }
 
 .nav-menu-button {
@@ -678,14 +691,27 @@ main > section {
     background-color: var(--section-bg-color);
     border-radius: var(--border-radius);
     display: flex;
-    justify-content: center;
+    flex-direction: column;
     box-shadow: var(--box-shadow);
     padding: 2rem;
+}
+
+section h2 {
+    margin-bottom: .5rem;
+}
+
+section p {
+    line-height: 1.5em;
 }
 
 .section1 {
     grid-area: 1 / 1 / span 2 / span 6;
     background-color: var(--main-color);
+    background: linear-gradient(45deg, var(--main-color), rgb(201, 192, 255));
+    mask-image: url(/Subtract.svg);
+    mask-size: cover;
+    mask-repeat: no-repeat;
+    mask-position: bottom;
     color: white;
 }
 
