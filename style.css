@@ -2,6 +2,8 @@
 
 body {
     --main-color: #818CF8;
+    --green: #4ADE80;
+    --red: #EF4444;
     --background: #F0F1F5;
     --transparent-background: rgba(255, 255, 255, 0.95);
     --primary-text: #595B6C;
@@ -17,38 +19,29 @@ body {
     --search-cancel: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%23595B6C'><path d='M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z'/></svg>");
 }
 
-body.dark-theme {
-    --main-color: #818CF8;
-    --background: hsl(229, 18%, 18%);
-    --transparent-background: hsla(233, 15%, 22%, 0.95);
-    --primary-text: hsl(232, 30%, 85%);
-    --secondary-text: hsl(235, 20%, 61%);
-    --tertiary-text: hsl(240, 15%, 54%);
+body.dark-theme,
+body.midnight-theme {
+    --primary-text: #cdd0e4;
+    --secondary-text: #888baf;
+    --tertiary-text: #78789b;
     --hover-text: #b1b5ce;
-    --section-bg-color: hsl(233, 15%, 22%);
     --nav-hover: hsla(233, 18%, 25%, 0.95);
     --box-shadow: 0 3px 12px rgb(0, 0, 0, .1);
     --hover-box-shadow: 0 4px 15px rgb(0, 0, 0, .2);
-    --border-radius: 8px;
     --search-icon: url('data:image/svg+xml,%3Csvg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" class="test" data-src="/icons/search-01-stroke-rounded.svg" xmlns:xlink="http://www.w3.org/1999/xlink" role="img" %3E%3Cpath d="M17.5 17.5L22 22" stroke="%23cdd0e4" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"%3E%3C/path%3E%3Cpath d="M20 11C20 6.02944 15.9706 2 11 2C6.02944 2 2 6.02944 2 11C2 15.9706 6.02944 20 11 20C15.9706 20 20 15.9706 20 11Z" stroke="%23cdd0e4" stroke-width="1.5" stroke-linejoin="round"%3E%3C/path%3E%3C/svg%3E');
     --search-cancel: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%23cdd0e4'><path d='M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z'/></svg>")
 }
 
+body.dark-theme {
+    --background: #262936;
+    --transparent-background: #303241f2;
+    --section-bg-color: #303241;
+}
+
 body.midnight-theme {
-    --main-color: #818CF8;
     --background: #000000;
     --transparent-background: rgba(0, 0, 0, 0.9);
-    --primary-text: hsl(232, 30%, 85%);
-    --secondary-text: hsl(235, 20%, 61%);
-    --tertiary-text: hsl(240, 15%, 54%);
-    --hover-text: #b1b5ce;
-    --section-bg-color: rgb(17, 17, 19);
-    --nav-hover: hsla(233, 18%, 25%, 0.95);
-    --box-shadow: 0 3px 12px rgb(0, 0, 0, .1);
-    --hover-box-shadow: 0 4px 15px rgb(0, 0, 0, .2);
-    --border-radius: 8px;
-    --search-icon: url('data:image/svg+xml,%3Csvg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" class="test" data-src="/icons/search-01-stroke-rounded.svg" xmlns:xlink="http://www.w3.org/1999/xlink" role="img" %3E%3Cpath d="M17.5 17.5L22 22" stroke="%23cdd0e4" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"%3E%3C/path%3E%3Cpath d="M20 11C20 6.02944 15.9706 2 11 2C6.02944 2 2 6.02944 2 11C2 15.9706 6.02944 20 11 20C15.9706 20 20 15.9706 20 11Z" stroke="%23cdd0e4" stroke-width="1.5" stroke-linejoin="round"%3E%3C/path%3E%3C/svg%3E');
-    --search-cancel: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%23cdd0e4'><path d='M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z'/></svg>")
+    --section-bg-color: #111113;
 }
 
 body.midnight-theme .section1,
@@ -386,6 +379,10 @@ input[type="search"] {
     width: 100%;
 }
 
+input[type="search"]::placeholder {
+    color: var(--tertiary-text);
+}
+
 input[type="search"]::-webkit-search-cancel-button {
     -webkit-appearance: none;
     height: 1.5rem;
@@ -411,7 +408,7 @@ input[type="search"]:focus {
 }
 
 .profile {
-    height: 50%;
+    height: 2rem;
     aspect-ratio: 1/1;
     cursor: pointer;
     position: relative;
@@ -422,11 +419,11 @@ input[type="search"]:focus {
 .profile::after {
     content: '';
     background-color: var(--green);
-    height: 10px;
-    width: 10px;
+    height: .5rem;
+    width: .5rem;
     position: absolute;
-    bottom: -2px;
-    right: -2px;
+    bottom: -.125rem;
+    right: -.125rem;
     border-radius: 12px;
     border: 2px solid var(--section-bg-color);
 }
