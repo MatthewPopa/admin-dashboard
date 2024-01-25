@@ -3,7 +3,14 @@
 body {
     --main-color: #818CF8;
     --green: #4ADE80;
+    --light-green: #dcfce7;
+    --dark-green: #22c55e;
     --red: #EF4444;
+    --light-red: #fecaca;
+    --dark-red: #dc2626;
+    --yellow: #facc15;
+    --light-yellow: #fef3c7;
+    --dark-yellow: #eab308;
     --background: #F0F1F5;
     --transparent-background: rgba(255, 255, 255, 0.95);
     --primary-text: #595B6C;
@@ -278,6 +285,7 @@ header {
     max-width: 1300px;
     width: 100%;
     backdrop-filter: saturate(500%) blur(10px);
+    border: 1px solid transparent;
 }
 
 .header-icon,
@@ -290,10 +298,6 @@ header {
     display: none;
 }
 
-.theme-select svg {
-    stroke: var(--primary-text);
-}
-
 .header-menu button:hover svg,
 .nav-menu-button:hover svg {
     stroke: var(--hover-text);
@@ -302,6 +306,7 @@ header {
 header button {
     cursor: pointer;
     padding: .25rem;
+    height: 2.25rem;
 }
 
 .header-menu {
@@ -324,7 +329,7 @@ ul.header-menu li {
     position: relative;
 }
 
-ul.header-menu li ul {
+ul.header-menu li > ul {
     visibility: hidden;
     position: absolute;
     display: flex;
@@ -337,7 +342,7 @@ ul.header-menu li ul {
     right: 0;
 }
 
-ul.header-menu li ul li {
+ul.header-menu li ul > li {
     display: flex;
     width: 100%;
     align-items: center;
@@ -358,6 +363,111 @@ ul.header-menu li ul li:hover {
 
 ul.header-menu li ul.active {
     visibility: visible;
+    z-index: 1;
+}
+
+ul.header-menu hr {
+    width: calc(100% +  1rem);
+    margin: 0;
+    border: unset;
+    border-top: 1px solid var(--tertiary-text);
+    margin: .25rem -.5rem;
+    opacity: .5;
+}
+
+ul.header-menu li ul svg {
+    stroke: var(--primary-text);
+}
+
+ul.header-menu li ul li .submenu-text {
+    font-size: .875rem;
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    gap: .25rem;
+}
+
+ul.header-menu li ul li .submenu-text.new::before {
+    content: '';
+    display: inline;
+    background-color: var(--main-color);
+    height: .5rem;
+    width: .5rem;
+    border-radius: 100%;
+    position: absolute;
+    right: .5rem;
+}
+
+ul.header-menu li ul li .submenu-text .header {
+    font-weight: 500;
+}
+
+ul.header-menu li ul li .submenu-text .subtext {
+    font-size: .875em;
+    color: var(--tertiary-text);
+}
+
+ul.header-menu li ul.notifications {
+    width: 20rem;
+    max-height: 30rem;
+    overflow-x: clip;
+    background-color: var(--section-bg-color);
+    box-shadow: var(--box-shadow);
+    border-radius: var(--border-radius);
+    padding: unset;
+    gap: 0;
+    right: 0;
+
+}
+
+ul.header-menu li .notifications > ul {
+    overflow-y:visible;
+    overflow-x: hidden;
+}
+
+ul.header-menu li ul::-webkit-scrollbar {
+  width: 6px;
+}
+
+ul.header-menu li ul::-webkit-scrollbar-thumb {
+    background: var(--tertiary-text);
+    border: 1px solid transparent;
+    background-clip: padding-box;
+    border-radius: 10px;
+}
+
+ul.header-menu li ul.notifications li {
+    display: flex;
+    width: 100%;
+    align-items: start;
+    gap: .75rem;
+    padding: 1.25rem 2rem 1.25rem 1rem;
+    border-radius: 0;
+    cursor: pointer;
+}
+
+ul.header-menu li .notifications hr {
+    margin: 0;
+}
+
+ul.header-menu li .notifications .label {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: .25rem 1rem;
+    font-size: 1.125rem;
+}
+
+ul.header-menu li .notifications .submenu-text .subtext {
+    margin-top: .5rem;
+}
+
+ul.header-menu li .notifications .submenu-text .header {
+    font-weight: 400;
+}
+
+ul.header-menu li .notifications .submenu-text.new .header {
+    font-weight: 500;
 }
 
 input[type="search"] {
@@ -408,19 +518,18 @@ input[type="search"]:focus {
 }
 
 .profile {
-    height: 2rem;
+    height: 2.5rem;
     aspect-ratio: 1/1;
     cursor: pointer;
     position: relative;
     user-select: none;
-    margin-left: 0.25rem;
 }
 
-.profile::after {
+.profile-header > .profile::after {
     content: '';
     background-color: var(--green);
-    height: .5rem;
-    width: .5rem;
+    height: .75rem;
+    width: .75rem;
     position: absolute;
     bottom: -.125rem;
     right: -.125rem;
@@ -432,6 +541,51 @@ input[type="search"]:focus {
     height: 100%;
     width: 100%;
     border-radius: 100vw;
+}
+
+button.notifications::after {
+    content: '3';
+    color: var(--section-bg-color);
+    background-color: var(--red);
+    height: 1.25rem;
+    width: 1.25rem;
+    font-size: .75rem;
+    position: absolute;
+    top: -.5rem;
+    right: -.5rem;
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.notifications .success,
+.notifications .warning {
+    height: 2.5rem;
+    aspect-ratio: 1/1;
+    cursor: pointer;
+    position: relative;
+    user-select: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 100%;
+}
+
+.notifications .success {
+    background-color: var(--light-green);
+}
+
+.notifications .success svg {
+    stroke: var(--dark-green);
+}
+
+.notifications .warning {
+    background-color: var(--light-yellow);
+}
+
+.notifications .warning svg {
+    stroke: var(--dark-yellow);
 }
 
 .search-icon {
@@ -558,7 +712,6 @@ nav::-webkit-scrollbar {
   width: 12px;
 }
  
-/* Handle */
 nav::-webkit-scrollbar-thumb {
   background: var(--tertiary-text);
   border: 4px solid transparent;
@@ -566,7 +719,6 @@ nav::-webkit-scrollbar-thumb {
   border-radius: 10px;
 }
 
-/* Handle on hover */
 nav::-webkit-scrollbar-thumb:hover {
   background: var(--tertiary-text); 
   border: 3px solid transparent;

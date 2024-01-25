@@ -2,11 +2,14 @@ const navBtn = document.querySelector('.nav-menu-button');
 const overlayToggle = document.querySelector('.toggle-overlay');
 const themeMenu = document.querySelector('#theme-select');
 const headerMenu = document.querySelector('.header-menu');
-let activeMenu;
+let activeMenu = false;
 
 document.addEventListener('click', (e) => {
-    if (!activeMenu.contains(e.target)) {
-        activeMenu.classList.remove('active');
+    if(activeMenu) {
+        if (!activeMenu.contains(e.target)) {
+            activeMenu.classList.remove('active');
+            activeMenu = false;
+        }
     }
     if (e.target == navBtn) {
         document.querySelector('aside').classList.add('visible');
@@ -16,7 +19,6 @@ document.addEventListener('click', (e) => {
         document.querySelector('aside').classList.remove('visible');
         document.querySelector('.toggle-overlay').classList.remove('enabled');
     }
-    console.log(e.target);
 });
 
 const prefersDarkScheme = window.matchMedia("(prefers-color-scheme: dark)");
@@ -25,6 +27,10 @@ headerMenu.addEventListener('click', (e) => {
     if(activeMenu && !activeMenu.contains(e.target)) {
         activeMenu.classList.remove('active');
         //current issue is that this is immediately counteracted
+    }
+    if(e.target.classList.contains(activeMenu.id)) {
+        activeMenu = false;
+        return;
     }
     if(e.target.tagName == 'BUTTON') {
         e.target.nextElementSibling.classList.toggle('active'); //by this
