@@ -8,9 +8,10 @@ https://coreui.io/demos/bootstrap/4.3/light-v3/
 https://demos.pixinvent.com/vuexy-html-admin-template/html/vertical-menu-template/index.html
 https://clever.webpixels.io/pages/projects/overview.html
 
-Icons from:
+Icons/images from:
 https://hugeicons.com/
 https://github.com/EmojiTwo/emojitwo
+https://undraw.co/
 
 Color palette from:
 https://tailwindcss.com/docs/customizing-colors#default-color-palette

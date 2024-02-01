@@ -68,6 +68,14 @@ body.midnight-theme .header-buttons button:last-child {
     color: var(--primary-text);
 }
 
+body.midnight-theme .section1 {
+    background: no-repeat 95% 80%/40% url(/undraw_stars_re_6je7.svg), var(--background);
+}
+
+body.midnight-theme .section1 svg {
+    stroke: var(--primary-text);
+}
+
 body.midnight-theme .header-buttons button:last-child .button-icon,
 body.midnight-theme .logo-text > svg {
     stroke: var(--primary-text);
@@ -737,8 +745,18 @@ section p {
 .section1 {
     grid-area: 1 / 1 / span 2 / span 6;
     background-color: var(--main-color);
-    background: linear-gradient(45deg, var(--main-color), rgb(201, 192, 255));
+    background: no-repeat 95% 80%/40% url(/undraw_stars_re_6je7.svg), linear-gradient(45deg, var(--main-color), rgb(201, 192, 255));
+    /* background: linear-gradient(45deg, var(--main-color), rgb(201, 192, 255)); */
     color: white;
+}
+
+.section1 svg {
+    stroke: white;
+    stroke-width: 3;
+}
+
+.section1 > p {
+    width: 50%;
 }
 
 .section2,
@@ -1169,5 +1187,8 @@ section > .icon svg {
     .section7,
     .section8 {
         grid-column: span 12;
+    }
+    .section1 > p {
+        width: 60%;
     }
 }
