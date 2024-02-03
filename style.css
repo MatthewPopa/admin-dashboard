@@ -328,7 +328,7 @@ header {
 .header-icon,
 .hamburger-icon {
     stroke: var(--primary-text);
-    transition: .1s;
+    transition: stroke .1s;
 }
 
 .theme-select .header-icon {
@@ -379,7 +379,7 @@ ul.header-menu li > ul {
     right: 0;
     transform: translateY(5px);
     opacity: 0;
-    transition: .25s;
+    transition: transform .25s, opacity .25s;
 }
 
 ul.header-menu li ul > li {
@@ -778,6 +778,10 @@ section p {
     grid-row: span 2;
 }
 
+.section9 {
+    grid-column: span 8;
+}
+
 section > .stat {
     font-size: 2em;
     font-size: min(6ch, 2em);
@@ -1118,6 +1122,165 @@ section > .icon svg {
     opacity: .9;
 }
 
+.section9 table {
+    font-size: .875rem;
+}
+
+.section9 .icon {
+    height: 2.5rem;
+    width: 2.5rem;
+    color: var(--primary-text);
+    border-radius: 100%;
+    background-color: var(--tertiary-text);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.section9 .admin-dashboard.icon {
+    background-color: rgb(129, 140, 248, .4);
+}
+
+.section9 .calculator.icon {
+    background-color: rgb(230, 196, 146, .4);
+}
+
+.section9 .landing-page.icon {
+    background-color: rgb(142, 182, 231, .4);
+}
+
+.section9 .icon img {
+    height: 70%;
+    border-radius: 100%;
+}
+
+.section9 tr {
+    border: unset;
+    border-bottom: 1px solid var(--background);
+    padding: .5rem 0;
+}
+
+th {
+    text-align: left;
+    font-weight: unset;
+    text-transform: uppercase;
+    font-size: .875rem;
+    font-weight: 500;
+    letter-spacing: .05em;
+}
+
+tr > td:nth-child(1) > a {
+    display: flex;
+    align-items: center;
+    gap: .5rem;
+}
+
+tr {
+    display: grid;
+    grid-template-columns: 14rem 5.5rem 1fr 3rem 4rem;
+    gap: 2rem;
+    width: 100%;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.project-info {
+    display: flex;
+    flex-direction: column;
+    gap: .125rem;
+    font-size: 1rem;
+}
+
+.project-date {
+    font-size: .875em;
+    color: var(--secondary-text);
+}
+
+.progress {
+    display: flex;
+    align-items: center;
+}
+
+.progress-bar {
+    width: 100%;
+    height: .375rem;
+    background-color: var(--background);
+    border-radius: 1rem;
+}
+
+.progress-fill {
+    background-color: var(--main-color);
+    width: 50%;
+    height: 100%;
+    border-radius: 1rem;
+}
+
+.center {
+    text-align: center;
+}
+
+td.center {
+    font-size: 1.25rem;
+}
+
+.percent {
+    width: 1rem;
+    padding: 0 1rem;
+}
+
+.actions button {
+    height: 1.25rem;
+    cursor: pointer;
+}
+
+.actions button svg {
+    stroke: var(--primary-text);
+    stroke-width: 3;
+    fill: var(--primary-text);
+    height: 100%;
+}
+
+.status {
+    display: flex;
+    align-items: center;
+    gap: .25rem;
+}
+
+tr td.status:before {
+    content: '';
+    display: inline-block;
+    height: .5rem;
+    width: .5rem;
+    border-radius: 100%;
+    background-color: var(--primary-text);
+}
+
+tr.completed td.status:before {
+    background-color: var(--green);
+}
+
+tr.in-progress td.status:before {
+    background-color: var(--yellow);
+}
+
+tr.dropped td.status:before {
+    background-color: var(--red);
+}
+
+tr.dropped td.status:before {
+    background-color: var(--red);
+}
+
+.completed .icon {
+    color: var(--dark-green);
+    background-color: var(--bg-green);
+}
+
+.dropped .icon {
+    color: var(--dark-red);
+    background-color: var(--bg-red);
+}
+
 @media screen and (width < 1200px) {
     .nav-menu-button {
         display: unset;
@@ -1142,6 +1305,9 @@ section > .icon svg {
     }
     input[type="search"]:focus {
         padding-left: 0;
+    }
+    .section9 {
+        grid-column: span 12;
     }
 }
 
