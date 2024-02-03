@@ -3,6 +3,15 @@ const overlayToggle = document.querySelector('.toggle-overlay');
 const themeMenu = document.querySelector('#theme-select');
 const headerMenu = document.querySelector('.header-menu');
 let activeMenu = false;
+const progressBars = document.querySelectorAll('.progress');
+
+function updateProgress() {
+    progressBars.forEach((element) => {
+        let progressFill = element.querySelector('.progress-fill');
+        let percent = element.querySelector('.percent').textContent;
+        progressFill.style.width = `${percent}`;
+    })
+};
 
 document.addEventListener('click', (e) => {
     if(activeMenu) {
