@@ -13,6 +13,8 @@ function updateProgress() {
     })
 };
 
+updateProgress();
+
 document.addEventListener('click', (e) => {
     if(activeMenu) {
         if (!activeMenu.contains(e.target)) {
