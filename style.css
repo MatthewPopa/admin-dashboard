@@ -18,6 +18,8 @@ body {
     --background: #F0F1F5;
     --border: #F0F1F5;
     --transparent-background: rgba(255, 255, 255, 0.95);
+    --modal-header: rgba(255, 255, 255, 0.6);
+    --modal-body: rgba(255, 255, 255, 0.2);
     --primary-text: #595B6C;
     --secondary-text: #A3A4AE;
     --tertiary-text: #b1b2c2;
@@ -52,7 +54,9 @@ body.midnight-theme {
 
 body.dark-theme {
     --background: #262936;
-    --transparent-background: #303241f2;
+    --transparent-background: rgba(48, 50, 65, 0.95);
+    --modal-header: rgba(48, 50, 65, 0.6);
+    --modal-body: rgba(48, 50, 65, 0.2);
     --section-bg-color: #303241;
     --border: #414457;
 }
@@ -60,22 +64,24 @@ body.dark-theme {
 body.midnight-theme {
     --background: #000000;
     --transparent-background: rgba(0, 0, 0, 0.9);
+    --modal-header: rgba(0, 0, 0, 0.6);
+    --modal-body: rgba(0, 0, 0, 0.2);
     --section-bg-color: #111113;
     --border: #25252b;
 }
 
-body.midnight-theme .section1,
+body.midnight-theme .welcome,
 body.midnight-theme .header-buttons button:last-child {
     background: var(--background);
     outline: 1px solid var(--main-color);
     color: var(--primary-text);
 }
 
-body.midnight-theme .section1 {
+body.midnight-theme .welcome {
     background: no-repeat 95% 80%/40% url(/undraw_stars_re_6je7.svg), var(--background);
 }
 
-body.midnight-theme .section1 svg {
+body.midnight-theme .welcome svg {
     stroke: var(--primary-text);
 }
 
@@ -204,7 +210,7 @@ aside {
     cursor: default;
     user-select: none;
     position: fixed;
-    z-index: 3;
+    z-index: 4;
     transition: transform .3s;
 }
 
@@ -298,7 +304,7 @@ section .logo-text svg {
     display: flex;
     justify-content: center;
     padding: 0 1.5rem;
-    z-index: 1;
+    z-index: 2;
 }
 
 .header-wrapper:before {
@@ -328,7 +334,7 @@ header {
     width: 100%;
     backdrop-filter: saturate(500%) blur(10px);
     border: 1px solid transparent;
-    z-index: 1;
+    z-index: 2;
 }
 
 .header-icon,
@@ -729,10 +735,10 @@ hgroup {
     background-color: var(--transparent-background);
     border-radius: var(--border-radius);
     box-shadow: var(--box-shadow);
-    background: rgba(255, 255, 255, 0.2);
+    background: var(--modal-body);
     backdrop-filter: blur(10px);
     -webkit-backdrop-filter: blur(10px);
-    border: 1px solid rgba(255, 255, 255, 0.6);
+    border: 1px solid var(--modal-header);
     transition: .25s;
     visibility: hidden;
     opacity: 0;
@@ -748,7 +754,7 @@ hgroup {
     width: 100%;
     padding: .5rem 1.5rem .5rem 1rem;
     border-bottom: 1px solid var(--border);
-    background: rgba(255, 255, 255, 0.6);
+    background: var(--modal-header);
     border-radius: .5rem .5rem 0 0;
 }
 
@@ -784,7 +790,7 @@ section p {
     line-height: 1.5em;
 }
 
-.section1 {
+.welcome {
     grid-area: 1 / 1 / span 2 / span 6;
     background-color: var(--main-color);
     background: no-repeat 95% 80%/40% url(/undraw_stars_re_6je7.svg), linear-gradient(45deg, var(--main-color), rgb(201, 192, 255));
@@ -792,23 +798,33 @@ section p {
     color: white;
 }
 
-.section1 svg {
+.welcome svg {
     stroke: white;
     stroke-width: 3;
 }
 
-.section1 > p {
+.welcome > p {
     width: 50%;
 }
 
-.section2,
-.section3 {
+.orders,
+.conversion {
     grid-column: span 3;
     grid-row: span 2;
 }
 
-.section4,
-.section5 {
+.earnings-report {
+    grid-column: span 8;
+    grid-row: span 3;
+}
+
+.weekly-earnings {
+    grid-column: span 4;
+    grid-row: span 3;
+}
+
+.revenue-breakdown,
+.website-analytics {
     grid-column: span 6;
     grid-row: span 3;
 }
@@ -820,8 +836,319 @@ section p {
     grid-row: span 2;
 }
 
-.section9 {
+.projects {
     grid-column: span 8;
+}
+
+.earnings-report .earnings-body {
+    display: grid;
+    grid-template-columns: 1fr 10rem;
+    column-gap: 1rem;
+    row-gap: 2rem;
+    height: 100%;
+}
+
+.earnings-report .earnings-body .graph {
+    height: 100%;
+    width: 100%;
+    min-height: 16rem;
+    display: grid;
+    grid-template-columns: 3rem repeat(8, 1fr);
+    grid-template-rows: repeat(4, 1fr) 1.5rem;
+    padding: 2rem 1rem 0 0;
+}
+
+.earnings-report .earnings-body .graph .y-axis-label {
+    grid-area: 1 / 1 / 5 / 2;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: end;
+    padding-right: 1rem;
+    margin: -.5rem 0;
+    color: var(--secondary-text);
+    font-size: .75em;
+    user-select: none;
+}
+
+.earnings-report .earnings-body .graph .x-axis-label {
+    grid-area: 5 / 1 / 6 / 10;
+    display: grid;
+    grid-template-columns: 3rem repeat(8, 1fr);
+    justify-items: center;
+    align-items: end;
+    color: var(--secondary-text);
+    font-size: .75em;
+    user-select: none;
+}
+
+.earnings-report .earnings-body .graph .graph-line {
+    grid-column: span 1;
+    grid-row: span 2;
+}
+
+.earnings-report .earnings-body .graph .graph-line.above {
+    grid-column: span 1;
+    grid-row: span 2;
+    border-top: 1px dashed var(--border);
+    border-bottom: 1px dashed var(--border);
+    display: flex;
+    align-items: end;
+    justify-content: center;
+    position: relative;
+}
+
+.earnings-report .earnings-body .graph .graph-line.above:before {
+    content: '';
+    width: 100%;
+    height: 50%;
+    border-top: 1px dashed var(--border);
+    position: absolute;
+}
+
+.earnings-report .earnings-body .graph .graph-line.below {
+    grid-column: span 1;
+    grid-row: span 2;
+    border-bottom: 1px dashed var(--border);
+    display: flex;
+    align-items: start;
+    justify-content: center;
+    position: relative;
+}
+
+.earnings-report .earnings-body .graph .graph-line.below:before {
+    content: '';
+    width: 100%;
+    height: 50%;
+    border-bottom: 1px dashed var(--border);
+    position: absolute;
+}
+
+.earnings-report .graph-line.above .bar {
+    background-color: var(--main-secondary);
+    width: .5rem;
+    height: 60%;
+    border-radius: .25rem .25rem 0 0;
+    position: relative;
+    z-index: 1;
+    transition: .1s;
+}
+
+.earnings-report .earnings-body .graph .graph-line .bar:hover {
+    opacity: .8;
+}
+
+.earnings-report .graph-line.above > .profit {
+    background-color: var(--green);
+    height: 25%;
+    position: absolute;
+    bottom: 0;
+}
+
+.earnings-report .graph-line.below > .bar {
+    background-color: var(--yellow);
+    width: .5rem;
+    height: 50%;
+    border-radius: 0 0 .25rem .25rem;
+    z-index: 1;
+    transition: .1s;
+}
+
+.earnings-report .earnings-body .graph .graph-line.below > div:before {
+    content: '';
+    height: .5rem;
+    width: 100%;
+    border-left: 1px solid var(--border);
+    position: absolute;
+    margin-bottom: -.5rem;
+    bottom: 0;
+    left: 0;
+}
+
+.earnings-report .earnings-body .graph .graph-line.below > div:after {
+    content: '';
+    height: .5rem;
+    width: 100%;
+    border-right: 1px solid var(--border);
+    position: absolute;
+    margin-bottom: -.5rem;
+    bottom: 0;
+    left: 0;
+}
+
+.earnings-report .info,
+.weekly-earnings-info {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.weekly-earnings-info {
+    margin: 1rem 0;
+}
+
+.earnings-report .info .number {
+    font-size: 1.25rem;
+    font-weight: 500;
+    display: flex;
+    align-items: center;
+}
+
+.earnings-report .info .profit-percentage,
+.weekly-earnings-info .weekly-stat {
+    display: flex;
+    gap: .5rem;
+    align-items: center;
+}
+
+.earnings-report .info .profit-percentage .profit-info,
+.weekly-earnings-info .weekly-stat .stat-info {
+    display: flex;
+    flex-direction: column;
+}
+
+.earnings-report .info .profit-percentage .number {
+    font-size: 2rem;
+    font-weight: 500;
+}
+
+.earnings-report .info .profit-percentage .icon,
+.weekly-stat .icon {
+    height: 2.5rem;
+    width: 2.5rem;
+    aspect-ratio: 1/1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: var(--border-radius);
+    background-color: var(--main-tertiary);
+}
+
+.weekly-stat:nth-child(1) .icon {
+    background-color: var(--bg-green);
+}
+
+.weekly-stat:nth-child(1) .icon svg {
+    stroke: var(--dark-green);
+}
+
+.weekly-stat:nth-child(2) .icon {
+    background-color: var(--bg-blue);
+}
+
+.weekly-stat:nth-child(2) .icon svg {
+    stroke: var(--blue);
+}
+
+.weekly-stat:nth-child(3) .icon {
+    background-color: var(--bg-yellow);
+}
+
+.weekly-stat:nth-child(3) .icon svg {
+    stroke: var(--dark-yellow);
+}
+
+.earnings-report .info .profit-percentage .icon svg,
+.weekly-stat .icon svg {
+    stroke: var(--main-color);
+    height: 1.5rem;
+    width: 1.5rem;
+}
+
+.earnings-report .info > div:nth-child(n+2) {
+    margin-left: .5rem;
+}
+
+.earnings-report .info > div:nth-child(n+2) .text {
+    margin-left: 1rem;
+}
+
+.earnings-report .info > div:nth-child(n+2) .number:before {
+    content: '';
+    display: inline-block;
+    height: .5rem;
+    width: .5rem;
+    border-radius: 100%;
+    margin-right: .5rem;
+    background-color: var(--main-secondary);
+}
+
+.earnings-report .info > div:nth-child(2) .number:before {
+    background-color: var(--main-secondary);
+}
+
+.earnings-report .info > div:nth-child(3) .number:before {
+    background-color: var(--yellow);
+}
+
+.earnings-report .info > div:nth-child(4) .number:before {
+    background-color: var(--green);
+}
+
+.weekly-earnings-info .weekly-stat .header {
+    font-size: 1.25rem;
+    font-weight: 500;
+}
+
+.weekly-earnings-info .weekly-stat .body {
+    color: var(--secondary-text);
+    font-size: .875em;
+}
+
+.weekly-earnings-graph {
+    height: 100%;
+    width: 100%;
+    min-height: 10rem;
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    grid-template-rows: 1fr min-content;
+    row-gap: .5rem;
+}
+
+.weekly-earnings-graph .x-axis-label {
+    grid-area: 2 / 1 / 3 / 8;
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    justify-items: center;
+    align-items: end;
+    color: var(--secondary-text);
+    font-size: .75em;
+    user-select: none;
+}
+
+.weekly-earnings-graph .weekly-bar {
+    background-color: transparent;
+    width: 1rem;
+    height: 100%;
+    border-radius: .25rem;
+    z-index: 1;
+    align-self: end;
+    justify-self: center;
+    transition: .1s;
+    display: flex;
+    align-items: end;
+}
+
+.weekly-earnings-graph .weekly-bar:hover {
+    background-color: var(--border);
+}
+
+.weekly-earnings-graph .weekly-bar .earnings-bar-fill {
+    background-color: var(--main-tertiary);
+    width: 100%;
+    height: 60%;
+    border-radius: .25rem;
+    transition: .1s;
+}
+
+.weekly-earnings-graph .weekly-bar.most .earnings-bar-fill {
+    background-color: var(--main-color);
+}
+
+.weekly-earnings-graph .weekly-bar:hover {
+    opacity: .8;
 }
 
 section > .stat {
@@ -855,7 +1182,7 @@ nav::-webkit-scrollbar-thumb:hover {
     background-color: rgb(0, 0, 0, .5);
     height: 100vh;
     width: 100vw;
-    z-index: 2;
+    z-index: 3;
 }
 
 .toggle-overlay.enabled {
@@ -880,19 +1207,19 @@ section > .icon svg {
     width: 2rem;
 }
 
-.section2 > .icon {
+.orders > .icon {
     background-color: var(--bg-blue);
 }
 
-.section2 > .icon svg {
+.orders > .icon svg {
     stroke: var(--blue);
 }
 
-.section3 > .icon {
+.conversion > .icon {
     background-color: var(--bg-green);
 }
 
-.section3 > .icon svg {
+.conversion > .icon svg {
     stroke: var(--dark-green);
 }
 
@@ -912,14 +1239,14 @@ section > .icon svg {
     margin-top: .5rem;
 }
 
-.revenue {
+.totals {
     margin-top: auto;
     display: flex;
     flex-direction: column;
     gap: .25rem;
 }
 
-.earnings {
+.revenue-breakdown .earnings {
     font-size: 2em;
     font-size: min(6ch, 2em);
     font-size: 5vw;
@@ -927,7 +1254,7 @@ section > .icon svg {
     font-weight: 500;
 }
 
-.revenue .comparison {
+.totals .comparison {
     color: var(--primary-text);
     font-size: 1em;
     margin-top: unset;
@@ -1138,42 +1465,42 @@ section > .icon svg {
     font-size: .8em;
 }
 
-main > .section9 {
+main > .projects {
     padding: unset;
 }
 
-.section9 > h2 {
+.projects > h2 {
     padding: 2rem 0 0 2rem;
 }
 
-.section9 > div {
+.projects > div {
     width: 100%;   
     overflow-x: auto;
     padding: 0 2rem 2rem 2rem;
 }
 
-.section9 > div::-webkit-scrollbar {
+.projects > div::-webkit-scrollbar {
     height: 18px;
 }
   
-.section9 > div::-webkit-scrollbar-thumb {
+.projects > div::-webkit-scrollbar-thumb {
     background: var(--tertiary-text);
     border: 4px solid transparent;
     background-clip: padding-box;
     border-radius: 10px;
 }
   
-.section9 > div::-webkit-scrollbar-thumb:hover {
+.projects > div::-webkit-scrollbar-thumb:hover {
     background: var(--secondary-text);
     background-clip: padding-box;
 }
 
-.section9 table {
+.projects table {
     font-size: .875rem;
     width: 100%;
 }
 
-.section9 .icon {
+.projects .icon {
     height: 2.5rem;
     width: 2.5rem;
     color: var(--main-color);
@@ -1184,24 +1511,24 @@ main > .section9 {
     justify-content: center;
 }
 
-.section9 .admin-dashboard.icon {
+.projects .admin-dashboard.icon {
     background-color: rgb(129, 140, 248, .4);
 }
 
-.section9 .calculator.icon {
+.projects .calculator.icon {
     background-color: rgb(230, 196, 146, .4);
 }
 
-.section9 .landing-page.icon {
+.projects .landing-page.icon {
     background-color: rgb(142, 182, 231, .4);
 }
 
-.section9 .icon img {
+.projects .icon img {
     height: 70%;
     border-radius: 100%;
 }
 
-.section9 tr {
+.projects tr {
     border: unset;
     border-bottom: 1px solid var(--border);
     padding: .5rem 0;
@@ -1357,28 +1684,29 @@ tr.dropped td.status:before {
     input[type="search"]:focus {
         padding-left: 0;
     }
-    .section9 {
+    .projects {
         grid-column: span 12;
     }
 }
 
 @media screen and (width < 800px) {
-    .section1 {
+    .welcome {
         grid-area: 1 / 1 / span 2 / span 12;
     }
     
-    .section2,
-    .section3 {
+    .orders,
+    .conversion {
         grid-column: span 6;
-        grid-row: span 2;
     }
-    
-    .section4,
-    .section5 {
+    .website-analytics {
         grid-column: span 12;
-        grid-row: span 3;
     }
-    
+    .earnings-report {
+        grid-column: span 12;
+    }
+    .weekly-earnings {
+        grid-column: span 6;
+    }
     .section6,
     .section7,
     .section8 {
@@ -1398,14 +1726,25 @@ tr.dropped td.status:before {
         justify-self: stretch;
         margin-top: .5rem;
     }
-    .section2,
-    .section3,
+    .earnings-report .earnings-body {
+        grid-template-columns: 1fr;
+    }
+    .earnings-report .info {
+        flex-direction: row;
+        align-items: end;
+    }
+    .revenue-breakdown {
+        grid-column: span 12;
+    }
+    .weekly-earnings {
+        grid-column: span 12;
+    }
     .section6,
     .section7,
     .section8 {
         grid-column: span 12;
     }
-    .section1 > p {
+    .welcome > p {
         width: 60%;
     }
     .line-point {

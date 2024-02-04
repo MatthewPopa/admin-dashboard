@@ -6,6 +6,8 @@ let activeMenu = false;
 const progressBars = document.querySelectorAll('.progress');
 const tooltipInfo = document.querySelectorAll('.tooltip');
 const tooltip = document.querySelector('.tooltip-modal');
+const earningsBars = document.querySelectorAll('.bar');
+const weeklyEarningsBars = document.querySelectorAll('.weekly-bar');
 
 function updateProgress() {
     progressBars.forEach((element) => {
@@ -15,16 +17,18 @@ function updateProgress() {
     })
 };
 
-// function populateTooltip() {
-//     tooltipInfo.forEach((element) => {
-//         element.addEventListener('mouseover', (e) => {
-//             let header = element.dataset.header;
-//             let body = element.dataset.body;
-//             tooltip.querySelector('.tooltip-header').textContent = header;
-//             tooltip.querySelector('.tooltip-body').textContent = body;
-//         });
-//     });
-// }
+function updateEarnings() {
+    earningsBars.forEach((element) => {
+        let earnings = element.dataset.body.slice(1);
+        let percentage = ((earnings / 1000) * 100).toFixed(1);
+        element.style.height = `${percentage}%`;
+    });
+    weeklyEarningsBars.forEach((element) => {
+        let earnings = element.dataset.body.slice(1);
+        let percentage = ((earnings / 200) * 100).toFixed(1);
+        element.querySelector('.earnings-bar-fill').style.height = `${percentage}%`;
+    });
+};
 
 document.addEventListener('scroll', fadeTooltip);
 
@@ -65,6 +69,7 @@ function fadeTooltip() {
 
 updateProgress();
 populateTooltip();
+updateEarnings();
 
 document.addEventListener('click', (e) => {
     if(activeMenu) {
