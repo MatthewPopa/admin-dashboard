@@ -21,21 +21,17 @@ function updateProgress() {
 
 function updateEarnings() {
     earningsBars.forEach((element, i) => {
-    setTimeout(() => {
         let earnings = element.dataset.body.slice(1);
         let percentage = ((earnings / 1000) * 100).toFixed(1);
         element.style.height = `${percentage}%`;
-    }, i * 40);
+        element.style.animationDelay = (i * .04) + 's';
     });
-    setTimeout(() => {
     weeklyEarningsBars.forEach((element, i) => {
-    setTimeout(() => {
         let earnings = element.dataset.body.slice(1);
         let percentage = ((earnings / 200) * 100).toFixed(1);
         element.querySelector('.earnings-bar-fill').style.height = `${percentage}%`;
-    }, i * 60);
+        element.style.animationDelay = (i * .1) + 1.1 + 's';
     });
-    }, 1100);
 };
 
 document.addEventListener('scroll', fadeTooltip);

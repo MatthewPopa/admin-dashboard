@@ -987,6 +987,12 @@ section p {
     position: absolute;
 }
 
+@keyframes barFill {
+    0%   { transform: scaleY(0%) }
+    70%  { transform: scaleY(110%) }
+    100% { transform: scaleY(100%) }
+  }
+
 .earnings-report .graph-line.above .bar {
     background-color: var(--main-secondary);
     width: .5rem;
@@ -994,7 +1000,10 @@ section p {
     border-radius: .25rem .25rem 0 0;
     position: relative;
     z-index: 1;
-    transition: .25s;
+    transition: .25s background-color, .25s opacity;
+    transform-origin: bottom center;
+    transform: scaleY(0%);
+    animation: barFill 400ms ease-out forwards;
 }
 
 .earnings-report .earnings-body .graph .graph-line .bar:hover {
@@ -1014,7 +1023,10 @@ section p {
     height: 0%;
     border-radius: 0 0 .25rem .25rem;
     z-index: 1;
-    transition: .25s;
+    transition: .25s background-color, .25s opacity;
+    transform-origin: top center;
+    transform: scaleY(0%);
+    animation: barFill 400ms ease-out forwards;
 }
 
 .earnings-report .earnings-body .graph .graph-line.below > div:before {
@@ -1193,9 +1205,12 @@ section p {
     z-index: 1;
     align-self: end;
     justify-self: center;
-    transition: .25s;
+    transition: .25s background-color, .25s opacity;
     display: flex;
     align-items: end;
+    transform-origin: bottom center;
+    transform: scaleY(0%);
+    animation: barFill 500ms ease-out forwards;
 }
 
 .weekly-earnings-graph .weekly-bar:hover {
