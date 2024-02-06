@@ -120,8 +120,8 @@ body[data-mode="system"] .header-icon.system {
 }
 
 *::selection {
-    background: #ffb7b7;
-    color: black;
+    background: var(--main-color);
+    color: white;
 }
 
 body {
@@ -478,7 +478,6 @@ ul.header-menu li ul.notifications {
     padding: unset;
     gap: 0;
     right: 0;
-
 }
 
 ul.header-menu li .notifications > ul {
@@ -557,6 +556,7 @@ input[type="search"] {
 
 input[type="search"]::placeholder {
     color: var(--tertiary-text);
+    overflow: visible;
 }
 
 input[type="search"]::-webkit-search-cancel-button {
@@ -1782,5 +1782,24 @@ tr.dropped td.status:before {
     }
     .line-point {
         scale: 2;
+    }
+    ul.header-menu li ul.notifications {
+        position: fixed;
+    }
+}
+
+@media screen and (width < 400px) {
+    .show400 {
+        display: block;
+    }
+    .hide400 {
+        display: none;
+    }
+    ul.header-menu li ul.notifications {
+        right: 0;
+        width: 100%;
+    }
+    input[type="search"]::placeholder {
+        visibility: hidden;
     }
 }
