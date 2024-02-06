@@ -115,6 +115,24 @@ body[data-mode="system"] .header-icon.system {
     display: block;
 }
 
+[data-mode="light"] {
+    color-scheme: light;
+}
+
+[data-mode="dark"] {
+    color-scheme: dark;
+}
+
+[data-mode="midnight"] {
+    color-scheme: dark;
+}
+
+@media (prefers-color-scheme: dark) {
+    [data-mode="system"] {
+        color-scheme: dark;
+    }
+}
+
 * {
     box-sizing: border-box;
 }
@@ -862,15 +880,8 @@ section p {
     grid-row: span 3;
 }
 
-.section6,
-.section7,
-.section8 {
-    grid-column: span 4;
-    grid-row: span 2;
-}
-
 .projects {
-    grid-column: span 8;
+    grid-column: span 12;
 }
 
 .earnings-report .earnings-body {
@@ -960,11 +971,11 @@ section p {
 .earnings-report .graph-line.above .bar {
     background-color: var(--main-secondary);
     width: .5rem;
-    height: 60%;
+    height: 0%;
     border-radius: .25rem .25rem 0 0;
     position: relative;
     z-index: 1;
-    transition: .1s;
+    transition: .25s;
 }
 
 .earnings-report .earnings-body .graph .graph-line .bar:hover {
@@ -973,7 +984,7 @@ section p {
 
 .earnings-report .graph-line.above > .profit {
     background-color: var(--green);
-    height: 25%;
+    height: 0%;
     position: absolute;
     bottom: 0;
 }
@@ -981,10 +992,10 @@ section p {
 .earnings-report .graph-line.below > .bar {
     background-color: var(--yellow);
     width: .5rem;
-    height: 50%;
+    height: 0%;
     border-radius: 0 0 .25rem .25rem;
     z-index: 1;
-    transition: .1s;
+    transition: .25s;
 }
 
 .earnings-report .earnings-body .graph .graph-line.below > div:before {
@@ -1009,16 +1020,20 @@ section p {
     left: 0;
 }
 
-.earnings-report .info,
+.earnings-report .info {
+    display: grid;
+    gap: 1rem;
+    justify-content: center;
+    grid-template-columns: repeat(auto-fill, minmax(8rem, 1fr));
+    align-content: center;
+}
+
 .weekly-earnings-info {
     display: flex;
     flex-direction: column;
     gap: 1rem;
     flex-wrap: wrap;
     justify-content: center;
-}
-
-.weekly-earnings-info {
     margin: 1rem 0;
 }
 
@@ -1159,7 +1174,7 @@ section p {
     z-index: 1;
     align-self: end;
     justify-self: center;
-    transition: .1s;
+    transition: .25s;
     display: flex;
     align-items: end;
 }
@@ -1171,9 +1186,9 @@ section p {
 .weekly-earnings-graph .weekly-bar .earnings-bar-fill {
     background-color: var(--main-tertiary);
     width: 100%;
-    height: 60%;
+    height: 0%;
     border-radius: .25rem;
-    transition: .1s;
+    transition: .25s;
 }
 
 .weekly-earnings-graph .weekly-bar.most .earnings-bar-fill {
@@ -1717,9 +1732,6 @@ tr.dropped td.status:before {
     input[type="search"]:focus {
         padding-left: 0;
     }
-    .projects {
-        grid-column: span 12;
-    }
 }
 
 @media screen and (width < 800px) {
@@ -1740,11 +1752,6 @@ tr.dropped td.status:before {
     .weekly-earnings {
         grid-column: span 6;
     }
-    .section6,
-    .section7,
-    .section8 {
-        grid-column: span 4;
-    }
 }
 
 @media screen and (width < 600px) {
@@ -1763,18 +1770,12 @@ tr.dropped td.status:before {
         grid-template-columns: 1fr;
     }
     .earnings-report .info {
-        flex-direction: row;
         align-items: end;
     }
     .revenue-breakdown {
         grid-column: span 12;
     }
     .weekly-earnings {
-        grid-column: span 12;
-    }
-    .section6,
-    .section7,
-    .section8 {
         grid-column: span 12;
     }
     .welcome > p {
