@@ -3,11 +3,13 @@ const overlayToggle = document.querySelector('.toggle-overlay');
 const themeMenu = document.querySelector('#theme-select');
 const headerMenu = document.querySelector('.header-menu');
 let activeMenu = false;
+let activeMenu2 = false;
 const progressBars = document.querySelectorAll('.progress');
 const tooltipInfo = document.querySelectorAll('.tooltip');
 const tooltip = document.querySelector('.tooltip-modal');
 const earningsBars = document.querySelectorAll('.bar');
 const weeklyEarningsBars = document.querySelectorAll('.weekly-bar');
+const moreMenus = document.querySelectorAll('.more');
 
 function updateProgress() {
     progressBars.forEach((element) => {
@@ -72,9 +74,9 @@ populateTooltip();
 updateEarnings();
 
 document.addEventListener('click', (e) => {
-    if(activeMenu) {
-        if (!activeMenu.contains(e.target)) {
-            activeMenu.classList.remove('active');
+    if(document.querySelector('.active')) {
+        if (!document.querySelector('.active').contains(e.target)) {
+            document.querySelector('.active').classList.remove('active');
             activeMenu = false;
         }
     }
@@ -90,24 +92,26 @@ document.addEventListener('click', (e) => {
 
 const prefersDarkScheme = window.matchMedia("(prefers-color-scheme: dark)");
 
-headerMenu.addEventListener('click', (e) => {
-    if(activeMenu && !activeMenu.contains(e.target)) {
-        activeMenu.classList.remove('active');
-        //current issue is that this is immediately counteracted
-    }
-    if(e.target.classList.contains(activeMenu.id)) {
-        activeMenu = false;
-        return;
-    }
-    if(e.target.tagName == 'BUTTON') {
-        e.target.nextElementSibling.classList.toggle('active'); //by this
+moreMenus.forEach((element) => {
+    element.addEventListener('click', openMoreMenu);
+});
+
+function openMoreMenu(e) {
+    let target = e.target;
+    let sibling = target.nextElementSibling;
+    console.log(target);
+    console.log(sibling);
+    if (sibling.classList.contains('more-menu')) {
+        if (document.querySelector('.active') && !target.nextElementSibling.classList.contains('active')) {
+            document.querySelector('.active').classList.remove('active');
+        }
+        sibling.classList.toggle('active');
         activeMenu = document.querySelector('.active');
         e.stopPropagation();
     }
-});
+}
 
 themeMenu.addEventListener("click", (e) => {
-    console.log(e.target.dataset.theme);
     if(e.target.tagName == 'LI') {
         changeTheme(e.target.dataset.theme);
     }

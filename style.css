@@ -8,6 +8,7 @@ body {
     --bg-green: #dcfce7;
     --dark-green: #22c55e;
     --red: #ef4444;
+    --light-red: #f87171;
     --bg-red: #fecaca;
     --dark-red: #dc2626;
     --yellow: #facc15;
@@ -114,17 +115,15 @@ body[data-mode="system"] .header-icon.system {
     display: block;
 }
 
-@media (prefers-color-scheme: dark) {
-    
-}
-
 * {
     box-sizing: border-box;
 }
 
 *::selection {
     background: #ffb7b7;
+    color: black;
 }
+
 body {
     font: 400 1em 'Roboto', 'sans-serif';
     margin: 0;
@@ -378,7 +377,7 @@ ul.header-menu li {
     position: relative;
 }
 
-ul.header-menu li > ul {
+.more-menu {
     visibility: hidden;
     position: absolute;
     display: flex;
@@ -394,7 +393,11 @@ ul.header-menu li > ul {
     transition: transform .25s, opacity .25s, visibility .25s;
 }
 
-ul.header-menu li ul > li {
+.more-menu .delete {
+    color: var(--light-red);
+}
+
+.more-menu > li {
     display: flex;
     width: 100%;
     align-items: center;
@@ -405,19 +408,23 @@ ul.header-menu li ul > li {
     cursor: pointer;
 }
 
-ul.header-menu li ul li * {
+.more-menu li * {
     pointer-events: none;
 }
 
-ul.header-menu li ul li:hover {
+.more-menu li:hover {
     background-color: var(--nav-hover);
 }
 
-ul.header-menu li ul.active {
+.more-menu.active {
     visibility: visible;
-    z-index: 2;
+    z-index: 1;
     transform: translateY(0);
     opacity: 1;
+}
+
+ul.header-menu li ul.active {
+    z-index: 2;
 }
 
 ul.header-menu hr {
@@ -776,6 +783,32 @@ main > section {
     flex-direction: column;
     box-shadow: var(--box-shadow);
     padding: 2rem;
+    position: relative;
+}
+
+section > .more {
+    position: absolute;
+    height: 1.25rem;
+    width: 1.25rem;
+    cursor: pointer;
+    top: 1.5rem;
+    right: 1rem;
+}
+
+section .more * {
+    pointer-events: none;
+}
+
+section > .more svg {
+    stroke: var(--primary-text);
+    fill: var(--primary-text);
+    height: 100%;
+    width: 100%;
+}
+
+section > .more-menu {
+    top: 3rem;
+    right: 1rem;
 }
 
 section h2 {

@@ -150,11 +150,11 @@ document.body.dataset.mode = currentTheme;
                     <input type="search" name="" id="" placeholder="Search">
                     <ul class="header-menu">
                         <li>
-                            <button class="language"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" class="header-icon" data-src="/icons/language-square-stroke-rounded.svg" xmlns:xlink="http://www.w3.org/1999/xlink" role="img">
+                            <button class="language more"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" class="header-icon" data-src="/icons/language-square-stroke-rounded.svg" xmlns:xlink="http://www.w3.org/1999/xlink" role="img">
                                 <path d="M7 8.37931H11.5M17 8.37931H14.5M11.5 8.37931H14.5M11.5 8.37931V7M14.5 8.37931C13.9725 10.2656 12.8679 12.0487 11.6071 13.6158M8.39286 17C9.41205 16.0628 10.5631 14.9134 11.6071 13.6158M11.6071 13.6158C10.9643 12.8621 10.0643 11.6426 9.80714 11.0909M11.6071 13.6158L13.5357 15.6207" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>
                                 <path d="M2.5 12C2.5 7.52166 2.5 5.28249 3.89124 3.89124C5.28249 2.5 7.52166 2.5 12 2.5C16.4783 2.5 18.7175 2.5 20.1088 3.89124C21.5 5.28249 21.5 7.52166 21.5 12C21.5 16.4783 21.5 18.7175 20.1088 20.1088C18.7175 21.5 16.4783 21.5 12 21.5C7.52166 21.5 5.28249 21.5 3.89124 20.1088C2.5 18.7175 2.5 16.4783 2.5 12Z" stroke-width="1.5"></path>
                                 </svg></button>
-                            <ul id="language">
+                            <ul class="more-menu" id="language">
                                 <li><img src="/america.svg">English</li>
                                 <li><img src="/france.svg">Français</li>
                                 <li><img src="/spain.svg">Español</li>
@@ -162,7 +162,7 @@ document.body.dataset.mode = currentTheme;
                             </ul>
                         </li>
                         <li>
-                            <button class="theme-select">
+                            <button class="theme-select more">
                                 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" class="header-icon sun" data-src="/icons/sun-03-stroke-rounded.svg" xmlns:xlink="http://www.w3.org/1999/xlink" role="img">
                                 <path d="M17 12C17 14.7614 14.7614 17 12 17C9.23858 17 7 14.7614 7 12C7 9.23858 9.23858 7 12 7C14.7614 7 17 9.23858 17 12Z" stroke-width="1.5"></path>
                                 <path d="M12 2V3.5M12 20.5V22M19.0708 19.0713L18.0101 18.0106M5.98926 5.98926L4.9286 4.9286M22 12H20.5M3.5 12H2M19.0713 4.92871L18.0106 5.98937M5.98975 18.0107L4.92909 19.0714" stroke-width="1.5" stroke-linecap="round"></path>
@@ -181,7 +181,7 @@ document.body.dataset.mode = currentTheme;
                                 <path d="M7 22H17" stroke-width="1.5" stroke-linecap="round"></path>
                                 </svg>
                             </button>
-                            <ul id="theme-select" class="theme-select">
+                            <ul id="theme-select" class="theme-select more-menu">
                                 <li data-theme="light"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" class="sun" data-src="/icons/sun-03-stroke-rounded.svg" xmlns:xlink="http://www.w3.org/1999/xlink" role="img">
                                     <path d="M17 12C17 14.7614 14.7614 17 12 17C9.23858 17 7 14.7614 7 12C7 9.23858 9.23858 7 12 7C14.7614 7 17 9.23858 17 12Z" stroke-width="1.5"></path>
                                     <path d="M12 2V3.5M12 20.5V22M19.0708 19.0713L18.0101 18.0106M5.98926 5.98926L4.9286 4.9286M22 12H20.5M3.5 12H2M19.0713 4.92871L18.0106 5.98937M5.98975 18.0107L4.92909 19.0714" stroke-width="1.5" stroke-linecap="round"></path>
@@ -202,12 +202,12 @@ document.body.dataset.mode = currentTheme;
                             </ul>
                         </li>
                         <li>
-                            <button class="notifications"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" class="header-icon" data-src="/icons/notification-02-stroke-rounded.svg" xmlns:xlink="http://www.w3.org/1999/xlink" role="img">
+                            <button class="notifications more"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" class="header-icon" data-src="/icons/notification-02-stroke-rounded.svg" xmlns:xlink="http://www.w3.org/1999/xlink" role="img">
                                 <path d="M2.52992 14.7696C2.31727 16.1636 3.268 17.1312 4.43205 17.6134C8.89481 19.4622 15.1052 19.4622 19.5679 17.6134C20.732 17.1312 21.6827 16.1636 21.4701 14.7696C21.3394 13.9129 20.6932 13.1995 20.2144 12.5029C19.5873 11.5793 19.525 10.5718 19.5249 9.5C19.5249 5.35786 16.1559 2 12 2C7.84413 2 4.47513 5.35786 4.47513 9.5C4.47503 10.5718 4.41272 11.5793 3.78561 12.5029C3.30684 13.1995 2.66061 13.9129 2.52992 14.7696Z" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>
                                 <path d="M8 19C8.45849 20.7252 10.0755 22 12 22C13.9245 22 15.5415 20.7252 16 19" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>
                                 </svg>
                             </button>
-                            <ul class="notifications" id="notifications">
+                            <ul class="notifications more-menu" id="notifications">
                                 <div class="label"><div><a href="#">Notifications</a></div>
                                 <button>
                                     <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
@@ -299,12 +299,12 @@ document.body.dataset.mode = currentTheme;
                             </ul>
                         </li>
                         <li>
-                            <button class="profile-header">
+                            <button class="more profile-header">
                                 <div class="profile">
                                     <img src="/profile.jpeg">
                                 </div>
                             </button>
-                            <ul id="profile-header">
+                            <ul class="more-menu" id="profile-header">
                                 <li class="submenu-profile">
                                     <div class="profile">
                                         <img src="/profile.jpeg">
@@ -417,6 +417,17 @@ document.body.dataset.mode = currentTheme;
                             </div>
                         </section>
                         <section class="earnings-report">
+                            <button class="more">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24" fill="none">
+                                    <path d="M13.5 4.5C13.5 3.67157 12.8284 3 12 3C11.1716 3 10.5 3.67157 10.5 4.5C10.5 5.32843 11.1716 6 12 6C12.8284 6 13.5 5.32843 13.5 4.5Z" stroke-width="1.5"/>
+                                    <path d="M13.5 12C13.5 11.1716 12.8284 10.5 12 10.5C11.1716 10.5 10.5 11.1716 10.5 12C10.5 12.8284 11.1716 13.5 12 13.5C12.8284 13.5 13.5 12.8284 13.5 12Z" stroke-width="1.5"/>
+                                    <path d="M13.5 19.5C13.5 18.6716 12.8284 18 12 18C11.1716 18 10.5 18.6716 10.5 19.5C10.5 20.3284 11.1716 21 12 21C12.8284 21 13.5 20.3284 13.5 19.5Z" stroke-width="1.5"/>
+                                </svg>
+                            </button>
+                            <ul class="more-menu">
+                                <li>View More</li>
+                                <li class="delete">Delete</li>
+                            </ul>
                             <h2>Monthly Earnings</h2>
                             <h3>Year to Date Profit Breakdown by Month</h3>
                             <div class="earnings-body">
@@ -485,6 +496,17 @@ document.body.dataset.mode = currentTheme;
                             </div>
                         </section>
                         <section class="weekly-earnings">
+                            <button class="more">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24" fill="none">
+                                    <path d="M13.5 4.5C13.5 3.67157 12.8284 3 12 3C11.1716 3 10.5 3.67157 10.5 4.5C10.5 5.32843 11.1716 6 12 6C12.8284 6 13.5 5.32843 13.5 4.5Z" stroke-width="1.5"/>
+                                    <path d="M13.5 12C13.5 11.1716 12.8284 10.5 12 10.5C11.1716 10.5 10.5 11.1716 10.5 12C10.5 12.8284 11.1716 13.5 12 13.5C12.8284 13.5 13.5 12.8284 13.5 12Z" stroke-width="1.5"/>
+                                    <path d="M13.5 19.5C13.5 18.6716 12.8284 18 12 18C11.1716 18 10.5 18.6716 10.5 19.5C10.5 20.3284 11.1716 21 12 21C12.8284 21 13.5 20.3284 13.5 19.5Z" stroke-width="1.5"/>
+                                </svg>
+                            </button>
+                            <ul class="more-menu">
+                                <li>View More</li>
+                                <li class="delete">Delete</li>
+                            </ul>
                             <h2>Weekly Earnings</h2>
                             <h3>Last Week's Earnings Overview</h3>
                             <div class="weekly-earnings-info">
@@ -547,6 +569,17 @@ document.body.dataset.mode = currentTheme;
                             </div>
                         </section>
                         <section class="revenue-breakdown">
+                            <button class="more">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24" fill="none">
+                                    <path d="M13.5 4.5C13.5 3.67157 12.8284 3 12 3C11.1716 3 10.5 3.67157 10.5 4.5C10.5 5.32843 11.1716 6 12 6C12.8284 6 13.5 5.32843 13.5 4.5Z" stroke-width="1.5"/>
+                                    <path d="M13.5 12C13.5 11.1716 12.8284 10.5 12 10.5C11.1716 10.5 10.5 11.1716 10.5 12C10.5 12.8284 11.1716 13.5 12 13.5C12.8284 13.5 13.5 12.8284 13.5 12Z" stroke-width="1.5"/>
+                                    <path d="M13.5 19.5C13.5 18.6716 12.8284 18 12 18C11.1716 18 10.5 18.6716 10.5 19.5C10.5 20.3284 11.1716 21 12 21C12.8284 21 13.5 20.3284 13.5 19.5Z" stroke-width="1.5"/>
+                                </svg>
+                            </button>
+                            <ul class="more-menu">
+                                <li>View More</li>
+                                <li class="delete">Delete</li>
+                            </ul>
                             <h2>Revenue Comparison</h2>
                             <h3>Breakdown by Year</h3>
                             <div class="section-body">
@@ -580,6 +613,17 @@ document.body.dataset.mode = currentTheme;
                             </div>
                         </section>
                         <section class="website-analytics">
+                            <button class="more">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24" fill="none">
+                                    <path d="M13.5 4.5C13.5 3.67157 12.8284 3 12 3C11.1716 3 10.5 3.67157 10.5 4.5C10.5 5.32843 11.1716 6 12 6C12.8284 6 13.5 5.32843 13.5 4.5Z" stroke-width="1.5"/>
+                                    <path d="M13.5 12C13.5 11.1716 12.8284 10.5 12 10.5C11.1716 10.5 10.5 11.1716 10.5 12C10.5 12.8284 11.1716 13.5 12 13.5C12.8284 13.5 13.5 12.8284 13.5 12Z" stroke-width="1.5"/>
+                                    <path d="M13.5 19.5C13.5 18.6716 12.8284 18 12 18C11.1716 18 10.5 18.6716 10.5 19.5C10.5 20.3284 11.1716 21 12 21C12.8284 21 13.5 20.3284 13.5 19.5Z" stroke-width="1.5"/>
+                                </svg>
+                            </button>
+                            <ul class="more-menu">
+                                <li>View More</li>
+                                <li class="delete">Delete</li>
+                            </ul>
                             <h2>Website Analytics</h2>
                             <h3>Statistical Overview</h3>
                             <div class="line-graph">
@@ -689,7 +733,7 @@ document.body.dataset.mode = currentTheme;
                                         <span class="percent">80%</span></div>
                                     </td>
                                     <td class="center">🙂</td>
-                                    <td class="actions center">
+                                    <td class="actions">
                                         <button class="more">
                                             <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24" fill="none">
                                                 <path d="M13.5 4.5C13.5 3.67157 12.8284 3 12 3C11.1716 3 10.5 3.67157 10.5 4.5C10.5 5.32843 11.1716 6 12 6C12.8284 6 13.5 5.32843 13.5 4.5Z" stroke-width="1.5"/>
@@ -697,6 +741,10 @@ document.body.dataset.mode = currentTheme;
                                                 <path d="M13.5 19.5C13.5 18.6716 12.8284 18 12 18C11.1716 18 10.5 18.6716 10.5 19.5C10.5 20.3284 11.1716 21 12 21C12.8284 21 13.5 20.3284 13.5 19.5Z" stroke-width="1.5"/>
                                             </svg>
                                         </button>
+                                        <ul class="more-menu">
+                                            <li>View More</li>
+                                            <li class="delete">Delete</li>
+                                        </ul>
                                     </td>
                                 </tr>
                                 <tr class="completed">
@@ -716,7 +764,7 @@ document.body.dataset.mode = currentTheme;
                                         <span class="percent">95%</span></div>
                                     </td>
                                     <td class="center">😀</td>
-                                    <td class="actions center">
+                                    <td class="actions">
                                         <button class="more">
                                             <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24" fill="none">
                                                 <path d="M13.5 4.5C13.5 3.67157 12.8284 3 12 3C11.1716 3 10.5 3.67157 10.5 4.5C10.5 5.32843 11.1716 6 12 6C12.8284 6 13.5 5.32843 13.5 4.5Z" stroke-width="1.5"/>
@@ -724,6 +772,10 @@ document.body.dataset.mode = currentTheme;
                                                 <path d="M13.5 19.5C13.5 18.6716 12.8284 18 12 18C11.1716 18 10.5 18.6716 10.5 19.5C10.5 20.3284 11.1716 21 12 21C12.8284 21 13.5 20.3284 13.5 19.5Z" stroke-width="1.5"/>
                                             </svg>
                                         </button>
+                                        <ul class="more-menu">
+                                            <li>View More</li>
+                                            <li class="delete">Delete</li>
+                                        </ul>
                                     </td>
                                 </tr>
                                 <tr class="dropped">
@@ -743,7 +795,7 @@ document.body.dataset.mode = currentTheme;
                                         <span class="percent">50%</span></div>
                                     </td>
                                     <td class="center">😐</td>
-                                    <td class="actions center">
+                                    <td class="actions">
                                         <button class="more">
                                             <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24" fill="none">
                                                 <path d="M13.5 4.5C13.5 3.67157 12.8284 3 12 3C11.1716 3 10.5 3.67157 10.5 4.5C10.5 5.32843 11.1716 6 12 6C12.8284 6 13.5 5.32843 13.5 4.5Z" stroke-width="1.5"/>
@@ -751,6 +803,10 @@ document.body.dataset.mode = currentTheme;
                                                 <path d="M13.5 19.5C13.5 18.6716 12.8284 18 12 18C11.1716 18 10.5 18.6716 10.5 19.5C10.5 20.3284 11.1716 21 12 21C12.8284 21 13.5 20.3284 13.5 19.5Z" stroke-width="1.5"/>
                                             </svg>
                                         </button>
+                                        <ul class="more-menu">
+                                            <li>View More</li>
+                                            <li class="delete">Delete</li>
+                                        </ul>
                                     </td>
                                 </tr>
                                 <tr class="on-hold">
@@ -770,7 +826,7 @@ document.body.dataset.mode = currentTheme;
                                         <span class="percent">67%</span></div>
                                     </td>
                                     <td class="center">😁</td>
-                                    <td class="actions center">
+                                    <td class="actions">
                                         <button class="more">
                                             <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24" fill="none">
                                                 <path d="M13.5 4.5C13.5 3.67157 12.8284 3 12 3C11.1716 3 10.5 3.67157 10.5 4.5C10.5 5.32843 11.1716 6 12 6C12.8284 6 13.5 5.32843 13.5 4.5Z" stroke-width="1.5"/>
@@ -778,6 +834,10 @@ document.body.dataset.mode = currentTheme;
                                                 <path d="M13.5 19.5C13.5 18.6716 12.8284 18 12 18C11.1716 18 10.5 18.6716 10.5 19.5C10.5 20.3284 11.1716 21 12 21C12.8284 21 13.5 20.3284 13.5 19.5Z" stroke-width="1.5"/>
                                             </svg>
                                         </button>
+                                        <ul class="more-menu">
+                                            <li>View More</li>
+                                            <li class="delete">Delete</li>
+                                        </ul>
                                     </td>
                                 </tr>
                                 <tr class="completed">
@@ -797,7 +857,7 @@ document.body.dataset.mode = currentTheme;
                                         <span class="percent">100%</span></div>
                                     </td>
                                     <td class="center">😁</td>
-                                    <td class="actions center">
+                                    <td class="actions">
                                         <button class="more">
                                             <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24" fill="none">
                                                 <path d="M13.5 4.5C13.5 3.67157 12.8284 3 12 3C11.1716 3 10.5 3.67157 10.5 4.5C10.5 5.32843 11.1716 6 12 6C12.8284 6 13.5 5.32843 13.5 4.5Z" stroke-width="1.5"/>
@@ -805,6 +865,10 @@ document.body.dataset.mode = currentTheme;
                                                 <path d="M13.5 19.5C13.5 18.6716 12.8284 18 12 18C11.1716 18 10.5 18.6716 10.5 19.5C10.5 20.3284 11.1716 21 12 21C12.8284 21 13.5 20.3284 13.5 19.5Z" stroke-width="1.5"/>
                                             </svg>
                                         </button>
+                                        <ul class="more-menu">
+                                            <li>View More</li>
+                                            <li class="delete">Delete</li>
+                                        </ul>
                                     </td>
                                 </td>
                                 </tbody>
