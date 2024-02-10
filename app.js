@@ -30,9 +30,25 @@ function updateEarnings() {
         let earnings = element.dataset.body.slice(1);
         let percentage = ((earnings / 200) * 100).toFixed(1);
         element.querySelector('.earnings-bar-fill').style.height = `${percentage}%`;
-        element.style.animationDelay = (i * .1) + 1.1 + 's';
+        if (window.innerWidth < 800) {
+            element.style.animationDelay = (i * .1) + 's';
+        } else {
+            element.style.animationDelay = (i * .1) + 1.1 + 's';
+        }
     });
 };
+
+const observer = new IntersectionObserver(entries => {
+    entries.forEach(entry => {
+        if (entry.isIntersecting) {
+            entry.target.classList.add('animate');
+        }
+    });
+});
+  
+observer.observe(document.querySelector('.earnings-report'));
+observer.observe(document.querySelector('.weekly-earnings-graph'));
+observer.observe(document.querySelector('.pie-chart'));
 
 document.addEventListener('scroll', fadeTooltip);
 

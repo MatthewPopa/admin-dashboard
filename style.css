@@ -993,7 +993,7 @@ section p {
     100% { transform: scaleY(100%) }
   }
 
-.earnings-report .graph-line.above .bar {
+  .earnings-report .graph-line.above .bar {
     background-color: var(--main-secondary);
     width: .5rem;
     height: 0%;
@@ -1003,6 +1003,9 @@ section p {
     transition: .25s background-color, .25s opacity;
     transform-origin: bottom center;
     transform: scaleY(0%);
+}
+
+.earnings-report.animate .graph-line .bar {
     animation: barFill 400ms ease-out forwards;
 }
 
@@ -1026,29 +1029,6 @@ section p {
     transition: .25s background-color, .25s opacity;
     transform-origin: top center;
     transform: scaleY(0%);
-    animation: barFill 400ms ease-out forwards;
-}
-
-.earnings-report .earnings-body .graph .graph-line.below > div:before {
-    content: '';
-    height: .5rem;
-    width: 100%;
-    border-left: 1px solid var(--border);
-    position: absolute;
-    margin-bottom: -.5rem;
-    bottom: 0;
-    left: 0;
-}
-
-.earnings-report .earnings-body .graph .graph-line.below > div:after {
-    content: '';
-    height: .5rem;
-    width: 100%;
-    border-right: 1px solid var(--border);
-    position: absolute;
-    margin-bottom: -.5rem;
-    bottom: 0;
-    left: 0;
 }
 
 .earnings-report .info {
@@ -1210,8 +1190,12 @@ section p {
     align-items: end;
     transform-origin: bottom center;
     transform: scaleY(0%);
+}
+
+.weekly-earnings-graph.animate .weekly-bar {
     animation: barFill 500ms ease-out forwards;
 }
+
 
 .weekly-earnings-graph .weekly-bar:hover {
     background-color: var(--border);
@@ -1411,9 +1395,37 @@ section > .icon svg {
     stroke-width: 3;
 }
 
+@property --angle {
+    syntax: '<angle>';
+    inherits: true;
+    initial-value: -10deg;
+}
+
+@keyframes scene-transition {
+    to { --angle: 370deg; }
+}
+  
+.pie-chart.animate {
+    animation: scene-transition 1000ms 250ms ease-in-out forwards;
+}
+
 .pie-chart {
     justify-self: end;
     padding-left: min(5%, 2rem);
+    -webkit-mask-image:
+    conic-gradient(
+    #fff 0deg,
+    #fff calc(var(--angle)),
+    transparent calc(var(--angle)),
+    transparent 30deg
+    );
+    mask-image:
+    conic-gradient(
+    #fff 0deg,
+    #fff calc(var(--angle)),
+    transparent calc(var(--angle)),
+    transparent 30deg
+    );
 }
 
 .pie-chart > .pie-section:nth-child(1) {
